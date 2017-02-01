@@ -38,3 +38,15 @@ testem.log
 #System Files
 .DS_Store
 Thumbs.db
+
+
+.npmignore
+.gitignore
+.gitmodules
+.travis.yml
+.coveralls.yml
+#ignore
+test/
+node_modules/
+coverage/
+
