@@ -133,7 +133,7 @@ class Itin extends Document {
 		console.log('itinerary successfully saved!');
 	}
 
-	static async getAll(limit = 10) {
+	static async getAll(limit = 100) {
 		let results = await this.find({}, {
 			limit,
 			sort: '-hits'
