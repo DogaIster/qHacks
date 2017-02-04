@@ -1,7 +1,11 @@
 const connect = require('camo').connect;
 const Document = require('camo').Document;
 const EmbeddedDocument = require('camo').EmbeddedDocument;
+const validEmail = require("email-validator");
 const uri = 'nedb:///data/chat-it';
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 let db;
 
 
@@ -14,8 +18,8 @@ class User extends Document {
 		this.phoneNumber = Number;
 	}
 
-	static verify(user, password) {
-		if (user.password === password) {
+	static async verify(user, password) {
+		if (await bcrypt.compare(user.password, password)) {
 			console.log("\n\nUser verified from db:", user);
 			return true;
 		}
@@ -39,7 +43,7 @@ class User extends Document {
 		if (!usr) {
 			return false;
 		}
-		if (!this.verify(data, usr.password))
+		if (!await this.verify(data, usr.password))
 			return false;
 
 		console.log(`\n\nUser login:`, usr);
@@ -55,8 +59,14 @@ class User extends Document {
 			return 'User already exists';
 		}
 
+		if (!validEmail.validate(data.email)) {
+			return 'Invalid email';
+		}
+
 		let user = User.create(data);
 		try {
+			let hashedPass = await bcrypt.hash(data.password, saltRounds);
+			user.password = hashedPass;
 			await user.save();
 			console.log(`\n\nCreated and saved user`, user);
 			return;
@@ -88,7 +98,6 @@ class Itin extends Document {
 		this.itineraryData = [
 			[Entry]
 		];
-
 	}
 
 

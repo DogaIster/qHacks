@@ -59,6 +59,7 @@ const postItinerary = wrap(async function postItinerary(req, res) {
 	}
 });
 
+
 const register = wrap(async function register(req, res) {
 	if (req.cookies.username) {
 		return res.status(404).json({
