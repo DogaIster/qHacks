@@ -7,4 +7,4 @@ var Itinerary = (function () {
     return Itinerary;
 }());
 export { Itinerary };
-//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/app/Itinerary/itinerary.js.map
+//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/app/Itinerary/Itinerary.js.map
