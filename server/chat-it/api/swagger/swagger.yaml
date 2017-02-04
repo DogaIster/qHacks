@@ -89,6 +89,11 @@ paths:
           description: password of the new user
           required: true
           type: string
+        - name: phoneNumber
+          in: query
+          description: user's phone number
+          required: true
+          type: number
           
       responses:
         "200":
