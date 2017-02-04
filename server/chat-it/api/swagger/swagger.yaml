@@ -17,7 +17,7 @@ consumes:
 produces:
   - application/json
 paths:
-            
+
   /postItinerary:
     x-swagger-router-controller: chat-it
     post:
@@ -27,21 +27,21 @@ paths:
       parameters:
         - name: itineraryData
           in: body
-          description: Post itinerary form data, postItinerary.data is an array of days, with each day containing an array of hours of that day. Within each array of hours there is a JSON object containing what the user did. Ex. location, activity, time of activity, duration of activity.  
+          description: Post itinerary form data, postItinerary.data is an array of days, with each day containing an array of hours of that day. Within each array of hours there is a JSON object containing what the user did. Ex. location, activity, time of activity, duration of activity.
           schema:
             $ref: "#/definitions/postItinerary"
       responses:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/SuccessResponse" 
+            $ref: "#/definitions/SuccessResponse"
         # responses may fall through to errors
         default:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-            
-         
+
+
   /login:
     x-swagger-router-controller: chat-it
     post:
@@ -58,13 +58,13 @@ paths:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/SuccessResponse"  
+            $ref: "#/definitions/SuccessResponse"
         # responses may fall through to errors
         default:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
- 
+
   /register:
     x-swagger-router-controller: chat-it
     post:
@@ -77,22 +77,22 @@ paths:
         description: registration data
         schema:
           $ref: "#/definitions/registerData"
-          
+
       responses:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/SuccessResponse"  
+            $ref: "#/definitions/SuccessResponse"
         # responses may fall through to errors
         default:
           description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"            
+            $ref: "#/definitions/ErrorResponse"
 
   /review:
     x-swagger-router-controller: chat-it
     post:
-      description: user posting review for the itinerary 
+      description: user posting review for the itinerary
       # used as the method name of the controller
       operationId: postReview
       parameters:
@@ -111,20 +111,20 @@ paths:
           description: review
           schema:
             $ref: "#/definitions/postReview"
-        
+
       responses:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/SuccessResponse"  
+            $ref: "#/definitions/SuccessResponse"
         # responses may fall through to errors
         default:
           description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"            
-          
-            
-                  
+            $ref: "#/definitions/ErrorResponse"
+
+
+
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
@@ -136,13 +136,13 @@ definitions:
     properties:
       message:
         type: string
-        
+
   SuccessResponse:
     required:
       - message
     properties:
       message:
-        type: string 
+        type: string
   entry:
     required:
       - location
@@ -152,19 +152,19 @@ definitions:
     properties:
       location:
         type: string
-      activity: 
+      activity:
         type: string
       time:
         type: string
       duration:
         type: integer
-        
+
   postItinerary:
     required:
       - location
       - dateFrom
       - dateTo
-      - data
+      - itineraryData
     properties:
       location:
         type: string
@@ -172,11 +172,11 @@ definitions:
         type: string
       dateTo:
         type: string
-      data:
+      itineraryData:
         type: array
-        items: 
+        items:
           type: array
-          items: 
+          items:
             $ref: "#/definitions/entry"
   registerData:
       required:
@@ -212,7 +212,3 @@ definitions:
         type: string
         items:
            $ref: "#/definitions/postReview"
-            
-          
-
-        
