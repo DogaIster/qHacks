@@ -9,16 +9,20 @@
   "main": "app.js",
   "dependencies": {
     "camo": "^0.12.3",
+    "cookie-parser": "^1.4.3",
     "express": "^4.12.3",
+    "express-async-wrap": "^1.0.0",
     "nedb": "^1.8.0",
     "swagger-express-mw": "^0.1.0"
   },
   "devDependencies": {
+    "eslint": "^3.15.0",
+    "eslint-plugin-no-async-without-await": "^1.2.0",
     "should": "^7.1.0",
     "supertest": "^1.0.0"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "node --harmony app.js",
     "test": "swagger project test"
   }
 }
