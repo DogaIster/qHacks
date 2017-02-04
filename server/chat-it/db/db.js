@@ -84,23 +84,27 @@ class Itin extends Document {
 		this.location = String;
 		this.dateTo = String;
 		this.dateFrom = String;
-		this.data = [
+		this.hits = Number;
+		this.itineraryData = [
 			[Entry]
 		];
+
 	}
 
 
 	static async add(data) {
 		let deleted = await this.deleteMany({});
 		console.log(`Deleted:${deleted}`);
+
 		let itin = Itin.create();
-		//itin.user = 'blah';
 		itin.location = data.location;
 		itin.dateTo = data.dateTo;
 		itin.dateFrom = data.dateFrom;
-		itin.data = [];
+		itin.user = data.username;
+		itin.itineraryData = [];
+		itin.hits = 0;
 
-		for (let day of data.data) {
+		for (let day of data.itineraryData) {
 			let hour = [];
 			//console.log(day)
 			for (let entry of day) {
@@ -108,7 +112,7 @@ class Itin extends Document {
 				let entryObj = Entry.create(entry);
 				hour.push(entryObj);
 			}
-			itin.data.push(hour);
+			itin.itineraryData.push(hour);
 		}
 
 		try {
@@ -120,8 +124,17 @@ class Itin extends Document {
 		console.log('itinerary successfully saved!');
 	}
 
-	static async get() {
-		return await this.find({});
+	static async getAll(limit = 10) {
+		let results = await this.find({}, {
+			limit,
+			sort: '-hits'
+		});
+		//increment hits
+		for (let result of results) {
+			result.hits++;
+			await result.save();
+		}
+		return results;
 	}
 }
 

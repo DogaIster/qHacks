@@ -25,7 +25,7 @@ paths:
       # used as the method name of the controller
       operationId: postItinerary
       parameters:
-        - name: data
+        - name: itineraryData
           in: body
           description: Post itinerary form data, postItinerary.data is an array of days, with each day containing an array of hours of that day. Within each array of hours there is a JSON object containing what the user did. Ex. location, activity, time of activity, duration of activity.  
           schema:
