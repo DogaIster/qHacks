@@ -19,8 +19,8 @@ import { RouterModule } from '@angular/router';
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
-import { AboutComponent } from './itinerary/about.component';
-import { ItineraryComponent } from './itinerary/itinerary.component';
+import { AboutComponent } from './Itinerary/about.component';
+import { ItineraryComponent } from './Itinerary/itinerary.component';
 
 @NgModule({
   imports: [
