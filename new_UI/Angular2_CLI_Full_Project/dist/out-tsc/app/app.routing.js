@@ -6,12 +6,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+// Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 export var routes = [
     {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'about',
         pathMatch: 'full',
     },
     {
@@ -69,4 +70,4 @@ AppRoutingModule = __decorate([
     })
 ], AppRoutingModule);
 export { AppRoutingModule };
-//# sourceMappingURL=../../../src/app/app.routing.js.map
+//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/app/app.routing.js.map

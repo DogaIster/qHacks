@@ -15,8 +15,10 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { SIDEBAR_TOGGLE_DIRECTIVES } from './shared/sidebar.directive';
 import { AsideToggleDirective } from './shared/aside.directive';
 import { BreadcrumbsComponent } from './shared/breadcrumb.component';
+// Routing Module
 import { AppRoutingModule } from './app.routing';
 import { RouterModule } from '@angular/router';
+// Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 import { AboutComponent } from './itinerary/about.component';
@@ -35,8 +37,8 @@ AppModule = __decorate([
             ChartsModule,
             RouterModule.forRoot([
                 {
-                    path: '',
-                    component: AboutComponent
+                    path: 'about',
+                    component: AboutComponent,
                 }
             ])
         ],
@@ -58,4 +60,4 @@ AppModule = __decorate([
     })
 ], AppModule);
 export { AppModule };
-//# sourceMappingURL=../../../src/app/app.module.js.map
+//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/app/app.module.js.map

@@ -31,8 +31,8 @@ import { ItineraryComponent } from './itinerary/itinerary.component';
     ChartsModule,
     RouterModule.forRoot([
       {
-        path: '',
-        component: AboutComponent
+        path: 'about',
+        component: AboutComponent,
       }
     ])
   ],

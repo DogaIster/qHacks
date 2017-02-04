@@ -1,9 +1,1 @@
-import { RouterModule } from '@angular/router';
-import { AboutComponent } from './about.component';
-RouterModule.forRoot([
-    {
-        path: '',
-        component: AboutComponent
-    }
-]);
-//# sourceMappingURL=../../../../src/app/itinerary/itinerary.module.js.map
+//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/app/Itinerary/itinerary.module.js.map

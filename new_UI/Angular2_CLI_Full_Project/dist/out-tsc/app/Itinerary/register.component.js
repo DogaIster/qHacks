@@ -23,4 +23,4 @@ RegisterComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], RegisterComponent);
 export { RegisterComponent };
-//# sourceMappingURL=../../../../src/app/Itinerary/register.component.js.map
+//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/app/Itinerary/register.component.js.map

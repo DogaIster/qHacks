@@ -13,8 +13,8 @@ var AboutComponent = (function () {
 AboutComponent = __decorate([
     Component({
         selector: 'about',
-        templateUrl: './about.component.html'
+        templateUrl: 'about.component.html'
     })
 ], AboutComponent);
 export { AboutComponent };
-//# sourceMappingURL=../../../../src/app/itinerary/about.component.js.map
+//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/app/itinerary/about.component.js.map

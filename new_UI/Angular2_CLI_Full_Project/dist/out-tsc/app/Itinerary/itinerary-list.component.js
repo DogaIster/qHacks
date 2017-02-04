@@ -23,4 +23,4 @@ ItineraryListComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], ItineraryListComponent);
 export { ItineraryListComponent };
-//# sourceMappingURL=../../../../src/app/Itinerary/itinerary-list.component.js.map
+//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/app/Itinerary/itinerary-list.component.js.map
