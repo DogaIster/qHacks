@@ -39,24 +39,31 @@ const wrap = require('express-async-wrap');
 const postItinerary = wrap(async function postItinerary(req, res) {
 	// variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
 
-	const data = req.swagger.params.data.value;
-	console.log(Object.getOwnPropertyNames(Itin));
+	const data = req.swagger.params.itineraryData.value || 'Anonymous';
+	data.username = req.cookies.username;
+
 	try {
 		await Itin.add(data);
-		let result = await Itin.get();
-		console.log(result[0]);
-		console.log(result[0].data[0]);
-		res.json();
+		let results = await Itin.getAll();
+		console.log(results[0]);
+		console.log(results[0].itineraryData[0]);
+		res.json({
+			message: 'itinerary successfully added'
+		});
+
 	} catch (e) {
-		console.log(e);
+		res.status(404).json({
+			message: 'An error has occured',
+			error: e
+		});
 	}
-	// this sends back a JSON response which is a single string
 });
 
 const register = wrap(async function register(req, res) {
 	if (req.cookies.username) {
 		return res.status(404).json({
-			message: 'Already logged in!'
+			message: 'An error has occured',
+			error: 'Already logged in'
 		});
 	}
 
@@ -71,7 +78,8 @@ const register = wrap(async function register(req, res) {
 		});
 	} else {
 		return res.status(404).json({
-			message: invalid,
+			message: 'An error has occured',
+			error: invalid,
 		});
 	}
 });
@@ -79,14 +87,16 @@ const register = wrap(async function register(req, res) {
 const login = wrap(async function login(req, res) {
 	if (req.cookies.username) {
 		return res.status(404).json({
-			message: 'Already logged in!'
+			message: 'An error has occured',
+			error: 'Already logged in!'
 		});
 	}
 	const data = req.swagger.params.loginData.value;
 
 	if (!await User.login(data)) {
 		return res.status(404).json({
-			message: 'Invalid login credentials'
+			message: 'An error has occured',
+			error: 'Invalid login credentials'
 		});
 	}
 
@@ -103,6 +113,7 @@ const logout = wrap(function logout(req, res) {
 		message: 'User successfully logged out'
 	});
 });
+
 module.exports = {
 	postItinerary,
 	register,
