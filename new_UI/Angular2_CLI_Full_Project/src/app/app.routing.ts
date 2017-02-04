@@ -19,6 +19,10 @@ export const routes: Routes = [
     },
     children: [
       {
+        path: 'itin',
+        loadChildren: 'app/Itinerary/itinerary.module#ItineraryModule'
+      },
+      {
         path: 'dashboard',
         loadChildren: './dashboard/dashboard.module#DashboardModule'
       },

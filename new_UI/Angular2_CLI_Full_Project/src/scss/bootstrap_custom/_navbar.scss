@@ -12,12 +12,14 @@ header.navbar {
     height: $navbar-height;
     margin-right: 0;
     padding: $navbar-padding-y $navbar-padding-x;
-    background-color: $navbar-brand-bg;
-    background-image: $navbar-brand-logo;
+    background-color: lighten($sidebar-bg, 5%);
+    color: white;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
+    text-align: center;
     background-size: $navbar-brand-logo-size;
     @include borders($navbar-brand-border);
+    width: 200px;
   }
 
   .navbar-nav {
