@@ -9,7 +9,6 @@ basePath: /
 #
 schemes:
   # tip: remove http to make production-grade
-  - https
   - http
 # format of bodies a client can send (Content-Type)
 consumes:
@@ -34,6 +33,8 @@ paths:
       responses:
         "200":
           description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse" 
         # responses may fall through to errors
         default:
           description: Error
@@ -46,21 +47,18 @@ paths:
     post:
       description: Post login
       # used as the method name of the controller
-      operationId: postLogin
+      operationId: login
       parameters:
-        - name: username
-          in: query
-          description: username to fetch
-          required: true
-          type: string
-        - name: password
-          in: query
-          description: password
-          required: true
-          type: string
+      - name: loginData
+        in: body
+        description: login data
+        schema:
+          $ref: "#/definitions/loginData"
       responses:
         "200":
           description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"  
         # responses may fall through to errors
         default:
           description: Error
@@ -72,32 +70,19 @@ paths:
     post:
       description: new user registration
       # used as the method name of the controller
-      operationId: postRegister
+      operationId: register
       parameters:
-        - name: username
-          in: query
-          description: new username
-          required: true
-          type: string
-        - name: email
-          in: query
-          description: users email
-          required: true
-          type: string
-        - name: password
-          in: query
-          description: password of the new user
-          required: true
-          type: string
-        - name: phoneNumber
-          in: query
-          description: user's phone number
-          required: true
-          type: number
+      - name: registerData
+        in: body
+        description: registration data
+        schema:
+          $ref: "#/definitions/registerData"
           
       responses:
         "200":
           description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"  
         # responses may fall through to errors
         default:
           description: Error
@@ -109,7 +94,7 @@ paths:
     post:
       description: user posting review for the itinerary 
       # used as the method name of the controller
-      operationId: Post Review
+      operationId: postReview
       parameters:
         - name: itineraryID
           in: query
@@ -130,6 +115,8 @@ paths:
       responses:
         "200":
           description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"  
         # responses may fall through to errors
         default:
           description: Error
@@ -150,6 +137,12 @@ definitions:
       message:
         type: string
         
+  SuccessResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string 
   entry:
     required:
       - location
@@ -185,7 +178,32 @@ definitions:
           type: array
           items: 
             $ref: "#/definitions/entry"
-    
+  registerData:
+      required:
+        - username
+        - password
+        - email
+        - phoneNumber
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+        phoneNumber:
+         type: number
+  loginData:
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+
+
   postReview:
     required:
       - data

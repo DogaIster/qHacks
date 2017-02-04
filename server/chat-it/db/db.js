@@ -10,38 +10,58 @@ class User extends Document {
 		super();
 		this.username = String;
 		this.password = String;
+		this.email = String;
+		this.phoneNumber = Number;
 	}
 
 	static verify(user, password) {
-		if (user.password === password)
-			return;
+		if (user.password === password) {
+			console.log("\n\nUser verified from db:", user);
+			return true;
+		}
 
-		return 'Invalid login';
+
+		return false;
 	}
+
 	static async get(data) {
-		let user = await this.find({
+		if (!data.username || !data.password)
+			return;
+		let usr = await this.findOne({
 			username: data.username
 		});
-		return this.verify(user, data.password);
+		console.log("\n\nUser grabbed from db:", usr);
+		return usr;
+	}
+
+	static async login(data) {
+		let usr = await this.get(data);
+		if (!usr) {
+			return false;
+		}
+		if (!this.verify(data, usr.password))
+			return false;
+
+		console.log(`\n\nUser login:`, usr);
+		return true;
 	}
 
 	static async add(data) {
+		let deleted = await this.deleteMany({});
+		console.log(`Deleted:${deleted}`);
 		//check if user exists yet
-		let u = this.find({
-			username: data.username
-		});
+		let u = await this.get(data);
 		if (u) {
-			return {
-				error: 'User already exists'
-			};
+			return 'User already exists';
 		}
 
 		let user = User.create(data);
 		try {
 			await user.save();
+			console.log(`\n\nCreated and saved user`, user);
 			return;
 		} catch (e) {
-			return console.log(e);
+			return e;
 		}
 	}
 }
