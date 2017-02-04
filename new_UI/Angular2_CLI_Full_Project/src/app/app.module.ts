@@ -14,10 +14,13 @@ import { BreadcrumbsComponent } from './shared/breadcrumb.component';
 
 // Routing Module
 import { AppRoutingModule } from './app.routing';
+import { RouterModule } from '@angular/router';
 
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
+import { AboutComponent } from './itinerary/about.component';
+import { ItineraryComponent } from './itinerary/itinerary.component';
 
 @NgModule({
   imports: [
@@ -25,7 +28,13 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
     AppRoutingModule,
     DropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    RouterModule.forRoot([
+      {
+        path: '',
+        component: AboutComponent
+      }
+    ])
   ],
   declarations: [
     AppComponent,
@@ -35,6 +44,7 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
+    AboutComponent
   ],
   providers: [{
     provide: LocationStrategy,

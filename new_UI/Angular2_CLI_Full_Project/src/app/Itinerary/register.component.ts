@@ -1,4 +1,14 @@
-/**
- * Created by DogaIster on 2017-02-04.
- */
-export class ItineraryRegisterComponent{}
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-register',
+  templateUrl: './register.component.html'
+})
+export class RegisterComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

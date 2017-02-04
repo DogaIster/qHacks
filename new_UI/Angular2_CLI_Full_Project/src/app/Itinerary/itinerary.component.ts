@@ -1,5 +1,14 @@
-/**
- * Created by DogaIster on 2017-02-04.
- */
+import { Component, OnInit } from '@angular/core';
 
-export class ItineraryModel{}
+@Component({
+  selector: 'app-itinerary',
+  templateUrl: './itinerary.component.html'
+})
+export class ItineraryComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
