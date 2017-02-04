@@ -3,14 +3,14 @@ info:
   version: "0.0.1"
   title: Hello World App
 # during dev, should point to your local machine
-host: localhost:10010
-# basePath prefixes all resource paths 
+host: 10.217.151.64:10010
+# basePath prefixes all resource paths
 basePath: /
-# 
+#
 schemes:
   # tip: remove http to make production-grade
-  - http
   - https
+  - http
 # format of bodies a client can send (Content-Type)
 consumes:
   - application/json
@@ -42,6 +42,54 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+            
+  /postItinerary:
+    x-swagger-router-controller: chat-it
+    post:
+      description: Post itinerary form data
+      # used as the method name of the controller
+      operationId: postItinerary
+      parameters:
+        - name: data
+          in: body
+          description: Post itinerary form data, postItinerary.data is an array of days, with each day containing an array of hours of that day. Within each array of hours there is a JSON object containing what the user did. Ex. location, activity, time of activity, duration of activity.  
+          schema:
+            $ref: "#/definitions/postItinerary"
+      responses:
+        "200":
+          description: Success
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+         
+  /login:
+    x-swagger-router-controller: chat-it
+    post:
+      description: Post login
+      # used as the method name of the controller
+      operationId: postLogin
+      parameters:
+        - name: username
+          in: query
+          description: username to fetch
+          required: true
+          type: string
+        - name: password
+          in: query
+          description: password
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+                  
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
@@ -58,3 +106,42 @@ definitions:
     properties:
       message:
         type: string
+        
+  entry:
+    required:
+      - location
+      - activity
+      - time
+      - duration
+    properties:
+      location:
+        type: string
+      activity: 
+        type: string
+      time:
+        type: string
+      duration:
+        type: integer
+        
+  postItinerary:
+    required:
+      - location
+      - dateFrom
+      - dateTo
+      - data
+    properties:
+      location:
+        type: string
+      dateFrom:
+        type: string
+      dateTo:
+        type: string
+      data:
+        type: array
+        items: 
+          type: array
+          items: 
+            $ref: "#/definitions/entry"
+          
+
+        
