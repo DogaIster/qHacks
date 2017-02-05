@@ -44,12 +44,12 @@ const webhook = wrap(async function webhook(req, res) {
 	let result;
 	if (city) {
 		result = await Entry.get({
-			location
+			location: city
 		});
 	}
 	if (country) {
 		result = await Itin.get({
-			location
+			location: country
 		});
 	}
 
