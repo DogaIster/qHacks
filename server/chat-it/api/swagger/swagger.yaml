@@ -3,7 +3,7 @@ info:
   version: "0.0.1"
   title: Chatlt
 # during dev, should point to your local machine
-host: 10.217.151.64:10010
+host: 50.112.200.45:3000
 # basePath prefixes all resource paths
 basePath: /
 #
@@ -63,7 +63,7 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-            
+
   /login:
     x-swagger-router-controller: chat-it
     post:
@@ -180,7 +180,7 @@ definitions:
         type: string
       duration:
         type: integer
-        
+
   postItinerary:
     required:
       - location

@@ -19,5 +19,4 @@ SwaggerExpress.create(config, function (err, swaggerExpress) {
 
 	var port = process.env.PORT || 10010;
 	app.listen(port);
-	console.log('\033[2J');
 });
