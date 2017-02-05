@@ -35,7 +35,7 @@ const wrap = require('express-async-wrap');
   Param 2: a handle to the response object
  */
 
-const webhook = wrap(function webhook(req, res) {
+const webhook = wrap(async function webhook(req, res) {
 	console.log(req.swagger.params.webhook.value);
 	return res.json({
 		speech: 'Bruh thats a gr8 place',
@@ -70,7 +70,9 @@ const postItinerary = wrap(async function postItinerary(req, res) {
 
 
 const register = wrap(async function register(req, res) {
+	console.log('registering user');
 	if (req.cookies.username) {
+		console.log('User already logged in');
 		return res.status(404).json({
 			message: 'An error has occured',
 			error: 'Already logged in'
