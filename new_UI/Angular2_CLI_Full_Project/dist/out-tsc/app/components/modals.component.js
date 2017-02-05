@@ -30,4 +30,4 @@ ModalsComponent = __decorate([
     })
 ], ModalsComponent);
 export { ModalsComponent };
-//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/app/components/modals.component.js.map
+//# sourceMappingURL=../../../../src/app/components/modals.component.js.map

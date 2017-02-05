@@ -15,9 +15,7 @@ var DashboardComponent = (function () {
         this.brandInfo = '#63c2de';
         this.brandWarning = '#f8cb00';
         this.brandDanger = '#f86c6b';
-        // dropdown buttons
         this.status = { isopen: false };
-        // lineChart1
         this.lineChart1Data = [
             {
                 data: [65, 59, 84, 84, 51, 55, 40],
@@ -69,7 +67,6 @@ var DashboardComponent = (function () {
         ];
         this.lineChart1Legend = false;
         this.lineChart1Type = 'line';
-        // lineChart2
         this.lineChart2Data = [
             {
                 data: [1, 18, 9, 17, 34, 22, 11],
@@ -122,7 +119,6 @@ var DashboardComponent = (function () {
         ];
         this.lineChart2Legend = false;
         this.lineChart2Type = 'line';
-        // lineChart3
         this.lineChart3Data = [
             {
                 data: [78, 81, 80, 45, 34, 12, 40],
@@ -162,7 +158,6 @@ var DashboardComponent = (function () {
         ];
         this.lineChart3Legend = false;
         this.lineChart3Type = 'line';
-        // barChart1
         this.barChart1Data = [
             {
                 data: [78, 81, 80, 45, 34, 12, 40, 78, 81, 80, 45, 34, 12, 40, 12, 40],
@@ -271,7 +266,6 @@ var DashboardComponent = (function () {
         ];
         this.mainChartLegend = false;
         this.mainChartType = 'line';
-        // social box charts
         this.socialChartData1 = [
             {
                 data: [65, 59, 84, 84, 51, 55, 40],
@@ -332,7 +326,6 @@ var DashboardComponent = (function () {
         ];
         this.socialChartLegend = false;
         this.socialChartType = 'line';
-        // sparkline charts
         this.sparklineChartData1 = [
             {
                 data: [35, 23, 56, 22, 97, 23, 64],
@@ -416,7 +409,6 @@ var DashboardComponent = (function () {
         $event.stopPropagation();
         this.status.isopen = !this.status.isopen;
     };
-    //convert Hex to RGBA
     DashboardComponent.prototype.convertHex = function (hex, opacity) {
         hex = hex.replace('#', '');
         var r = parseInt(hex.substring(0, 2), 16);
@@ -425,19 +417,16 @@ var DashboardComponent = (function () {
         var rgba = 'rgba(' + r + ',' + g + ',' + b + ',' + opacity / 100 + ')';
         return rgba;
     };
-    // events
     DashboardComponent.prototype.chartClicked = function (e) {
         console.log(e);
     };
     DashboardComponent.prototype.chartHovered = function (e) {
         console.log(e);
     };
-    // mainChart
     DashboardComponent.prototype.random = function (min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     };
     DashboardComponent.prototype.ngOnInit = function () {
-        //generate random values for mainChart
         for (var i = 0; i <= this.mainChartElements; i++) {
             this.mainChartData1.push(this.random(50, 200));
             this.mainChartData2.push(this.random(80, 100));
@@ -453,4 +442,4 @@ DashboardComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], DashboardComponent);
 export { DashboardComponent };
-//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/app/dashboard/dashboard.component.js.map
+//# sourceMappingURL=../../../../src/app/dashboard/dashboard.component.js.map
