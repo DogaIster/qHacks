@@ -17,7 +17,31 @@ consumes:
 produces:
   - application/json
 paths:
-
+  /webhook:
+    x-swagger-router-controller: chat-it
+    post:
+      description: webhook for api.ai
+      operationId: webhook
+      parameters:
+      - name: webhook
+        in: body
+        description: webhook body response
+        schema:
+          properties:
+            webhook:
+              type: object
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/WebhookResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+            
   /postItinerary:
     x-swagger-router-controller: chat-it
     post:
@@ -225,7 +249,31 @@ definitions:
         password:
           type: string
 
-
+  WebhookResponse:
+    required:
+      - speech
+      - displayText
+      - data
+      - contextOut
+      - source
+    properties:
+      speech:
+        type: string
+      displayText:
+        type: string
+      data:
+        type: object
+      contextOut:
+        type: array
+        items:
+          properties:
+            location:
+              type: string
+            date:
+              type: string
+      source:
+        type: string
+        
   postReview:
     required:
       - data

@@ -35,7 +35,9 @@ const wrap = require('express-async-wrap');
   Param 2: a handle to the response object
  */
 
-
+const webhook = wrap(function webhook(req, res) {
+	console.log(req.swagger.params.webhook.value);
+});
 const postItinerary = wrap(async function postItinerary(req, res) {
 	// variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
 
@@ -88,20 +90,14 @@ const register = wrap(async function register(req, res) {
 const getItinerary = wrap(async function getItinerary(req, res) {
 	const query = req.swagger.params.getParams.value;
 	//check if obj empty
-	console.log('called2')
 	if (Object.keys(query).length === 0 && query.constructor === Object) {
-		console.log('called1')
 		try {
-			console.log('called')
 			let results = await Itin.getAll();
-			console.log('\n\n\n\n results', results)
 			return res.json(results);
 		} catch (e) {
-			//	console.log('error', e);
+			console.log('error', e);
 		}
-
 	}
-	console.log('hi')
 });
 
 const login = wrap(async function login(req, res) {
@@ -140,4 +136,5 @@ module.exports = {
 	register,
 	login,
 	logout,
+	webhook
 };
