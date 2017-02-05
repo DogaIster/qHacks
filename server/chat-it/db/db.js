@@ -87,6 +87,17 @@ class Entry extends EmbeddedDocument {
 		this.time = String;
 		this.duration = Number;
 	}
+
+	static async get(data) {
+		let locationRegex = new RegExp(data.location, 'i');
+		let query = {
+			'location': locationRegex
+		};
+
+		console.log(query);
+		let result = await this.findOne(query);
+		console.log(result);
+	}
 }
 
 
@@ -169,9 +180,10 @@ class Itin extends Document {
 	static async get(data) {
 		let locationRegex = new RegExp(data.location, 'i');
 		let query = {
-			'itineraryData.location': locationRegex
+			'location': locationRegex
 		};
 
+		console.log(query);
 		let result = await this.findOne(query);
 		console.log(result);
 	}
@@ -186,4 +198,5 @@ connect(uri).then(function (database) {
 module.exports = {
 	Itin,
 	User,
+	Entry,
 };

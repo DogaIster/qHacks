@@ -11,6 +11,7 @@
   It is a good idea to list the modules that your application depends on in the package.json in the project root
  */
 const Itin = require('../../db/db').Itin;
+const Entry = require('../../db/db').Itin;
 const User = require('../../db/db').User;
 const wrap = require('express-async-wrap');
 
@@ -40,11 +41,18 @@ const webhook = wrap(async function webhook(req, res) {
 	console.log(obj.result.parameters);
 	let city = obj.result.parameters["geo-city"];
 	let country = obj.result.parameters["geo-country"];
-	let location = city || country;
-	console.log(location);
-	let result = await Itin.get({
-		location
-	});
+	let result;
+	if (city) {
+		result = await Entry.get({
+			location
+		});
+	}
+	if (country) {
+		result = await Itin.get({
+			location
+		});
+	}
+
 	console.log(result);
 	return res.json({
 		speech: 'Bruh thats a gr8 place',
