@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalDirective } from 'ng2-bootstrap/modal/modal.component';
 
 import { ModalsComponent } from '../components/modals.component';
-
+import * as $ from 'jquery';
 
 @Component({
   templateUrl: 'dashboard.component.html'
@@ -471,5 +471,12 @@ export class DashboardComponent implements OnInit {
       this.mainChartData2.push(this.random(80,100));
       this.mainChartData3.push(65);
     }
+  }
+  ngAfterViewInit() {
+    $('#searchButton').click(function () {
+      $.get('http://50.112.200.45/getItinerary', (data) => {
+        console.log(data);
+      })
+    })
   }
 }

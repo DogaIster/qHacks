@@ -87,17 +87,6 @@ class Entry extends EmbeddedDocument {
 		this.time = String;
 		this.duration = Number;
 	}
-
-	static async get(data) {
-		let locationRegex = new RegExp(data.location, 'i');
-		let query = {
-			'location': locationRegex
-		};
-
-		console.log(query);
-		let result = await this.findOne(query);
-		console.log(result);
-	}
 }
 
 
@@ -133,6 +122,7 @@ class Itin extends Document {
 			for (let entry of day) {
 				//console.log(entry);
 				let entryObj = Entry.create(entry);
+				itin.location += ' ' + entryObj.location;
 				hour.push(entryObj);
 			}
 			itin.itineraryData.push(hour);
@@ -184,8 +174,17 @@ class Itin extends Document {
 		};
 
 		console.log(query);
-		let result = await this.findOne(query);
-		console.log(result);
+		try {
+			let result = await this.findOne(query);
+			result.hits++;
+			await result.save();
+			return result;
+		} catch (e) {
+			console.log('error', e);
+			return null;
+		}
+
+
 	}
 }
 
@@ -198,5 +197,4 @@ connect(uri).then(function (database) {
 module.exports = {
 	Itin,
 	User,
-	Entry,
 };
