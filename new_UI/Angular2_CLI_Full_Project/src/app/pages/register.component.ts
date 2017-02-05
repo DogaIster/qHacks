@@ -5,6 +5,12 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
 
+  addUser (username: string, password: string, email: string, phoneNumber: string) {
+
+  }
+
+
+
   constructor() { }
 
 }

@@ -7,6 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
 import { TabsModule } from 'ng2-bootstrap/tabs';
@@ -30,6 +32,9 @@ AppModule = __decorate([
         imports: [
             BrowserModule,
             AppRoutingModule,
+            FormsModule,
+            HttpModule,
+            JsonpModule,
             DropdownModule.forRoot(),
             TabsModule.forRoot(),
             ChartsModule,

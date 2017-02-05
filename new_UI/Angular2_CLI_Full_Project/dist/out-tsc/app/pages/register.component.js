@@ -11,6 +11,8 @@ import { Component } from '@angular/core';
 var RegisterComponent = (function () {
     function RegisterComponent() {
     }
+    RegisterComponent.prototype.addUser = function (username, password, email, phoneNumber) {
+    };
     return RegisterComponent;
 }());
 RegisterComponent = __decorate([
@@ -20,4 +22,4 @@ RegisterComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], RegisterComponent);
 export { RegisterComponent };
-//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/app/pages/register.component.js.map
+//# sourceMappingURL=../../../../src/app/pages/register.component.js.map
