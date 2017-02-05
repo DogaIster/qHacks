@@ -133,6 +133,7 @@ class Itin extends Document {
 			for (let entry of day) {
 				//console.log(entry);
 				let entryObj = Entry.create(entry);
+				await entryObj.save();
 				hour.push(entryObj);
 			}
 			itin.itineraryData.push(hour);
