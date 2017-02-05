@@ -170,7 +170,7 @@ class Itin extends Document {
 	static async get(data) {
 		let locationRegex = new RegExp(data.location, 'i');
 		let query = {
-			'itineraryData.location': locationRegex
+			'location': locationRegex
 		};
 
 		console.log(query);
