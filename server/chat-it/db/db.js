@@ -51,15 +51,17 @@ class User extends Document {
 	}
 
 	static async add(data) {
-		let deleted = await this.deleteMany({});
-		console.log(`Deleted:${deleted}`);
+		//let deleted = await this.deleteMany({});
+		//console.log(`Deleted:${deleted}`);
 		//check if user exists yet
 		let u = await this.get(data);
 		if (u) {
+			console.log('User already exists');
 			return 'User already exists';
 		}
 
 		if (!validEmail.validate(data.email)) {
+			console.log('Invalid email');
 			return 'Invalid email';
 		}
 
@@ -71,6 +73,7 @@ class User extends Document {
 			console.log(`\n\nCreated and saved user`, user);
 			return;
 		} catch (e) {
+			console.log(e);
 			return e;
 		}
 	}
