@@ -45,8 +45,17 @@ const webhook = wrap(async function webhook(req, res) {
 	let result = await Itin.get({
 		location
 	});
+
 	let retStr = '\n\n\n';
-	if (city) {
+	if (!result) {
+		retStr += `Whoops! It seems like we dont have any itinerary entries for what you asked for yet. Perhaps check out these countries that we do have info for instead!:
+`;
+		let results = await Itin.getAll();
+		for (let r of results) {
+			let country = r.location.split(' ')[0];
+			retStr += '\n' + country;
+		}
+	} else if (city) {
 		let locationRegex = new RegExp(city, 'i');
 		let match;
 		let isMatched = false;
