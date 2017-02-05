@@ -473,8 +473,10 @@ export class DashboardComponent implements OnInit {
     }
   }
   ngAfterViewInit() {
-    $.get('http://50.112.200.45/getItinerary', (data) => {
-      console.log(data);
+    $('#searchButton').click(function () {
+      $.get('http://50.112.200.45/getItinerary', (data) => {
+        console.log(data);
+      })
     })
   }
 }
