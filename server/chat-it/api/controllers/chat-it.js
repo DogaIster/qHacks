@@ -45,9 +45,39 @@ const webhook = wrap(async function webhook(req, res) {
 	let result = await Itin.get({
 		location
 	});
+	let retStr = '';
+	if (city) {
+		let locationRegex = new RegExp(city, 'i');
+		let match;
+		let isMatched = false;
+		for (let day of result.itineraryData) {
+			if (isMatched) break;
+			for (let entry of day) {
+				if (entry.location.search(locationRegex) !== -1) {
+					match = entry;
+					isMatched = true;
+					break;
+				}
+			}
+		}
+
+		retStr = `Wow! ${city}! That's a great place to check out. Luckily, ${result.user} also went in this area from
+		${result.dateFrom}-${result.dateTo}. They went ${match.activity} at ${match.time} for ${match.duration} hours.`;
+
+	} else {
+		retStr = `${country}, a great place to check out! Text me back a city in ${country} to get more information of what people did there.
+		Here are some possible cities that people have written about:
+		`;
+		for (let day of result.itineraryData) {
+			for (let entry of day) {
+				retStr += entry.location + '\n';
+			}
+		}
+	}
+
 	console.log(result);
 	return res.json({
-		speech: 'Bruh thats a gr8 place',
+		speech: retStr,
 		displayText: 'Nice 1 ',
 		data: {},
 		contextOut: [],

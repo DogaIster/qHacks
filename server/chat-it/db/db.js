@@ -175,7 +175,7 @@ class Itin extends Document {
 
 		console.log(query);
 		let result = await this.findOne(query);
-		console.log(result);
+		return result;
 	}
 }
 
