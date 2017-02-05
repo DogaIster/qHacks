@@ -11,10 +11,37 @@ import { Component } from '@angular/core';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { User } from './user';
+import * as $ from 'jquery';
 var RegisterComponent = (function () {
     function RegisterComponent() {
         this.user = new User(this.username1, this.password1, this.email1, this.phone_number1);
     }
+    RegisterComponent.prototype.ngAfterViewInit = function () {
+        var register = {
+            username: '',
+            password: '',
+            email: '',
+            phoneNumber: 0,
+        };
+        $("#registerButton").click(function () {
+            register.username = $('#username').val();
+            register.password = $('#password').val();
+            register.email = $('#email').val();
+            register.phoneNumber = +$('#phoneNumber').val();
+            console.log(register);
+            $.ajax({
+                url: 'http://50.112.200.45/register',
+                type: "POST",
+                async: false,
+                data: JSON.stringify(register),
+                contentType: "application/json",
+                dataType: "json",
+                success: function (data) {
+                    console.log('success!', data);
+                }
+            });
+        });
+    };
     return RegisterComponent;
 }());
 RegisterComponent = __decorate([
