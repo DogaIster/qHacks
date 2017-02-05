@@ -1,6 +1,6 @@
 const connect = require('camo').connect;
 const Document = require('camo').Document;
-const EmbeddedDocument = require('camo').EmbeddedDocument;
+//const EmbeddedDocument = require('camo').EmbeddedDocument;
 const validEmail = require("email-validator");
 const uri = 'nedb:///data/chat-it';
 const bcrypt = require('bcrypt');
@@ -79,7 +79,7 @@ class User extends Document {
 	}
 }
 
-class Entry extends EmbeddedDocument {
+class Entry extends Document {
 	constructor() {
 		super();
 		this.location = String;
@@ -164,11 +164,6 @@ class Itin extends Document {
 				await result.save();
 			} catch (e) {
 				console.log(e);
-			}
-			for (let day of result.itineraryData) {
-				for (let hour of day) {
-					delete hour._schema;
-				}
 			}
 			returnArr.push(result.toJSON());
 		}
