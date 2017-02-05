@@ -24,4 +24,4 @@ AboutComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], AboutComponent);
 export { AboutComponent };
-//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/app/Itinerary/about.component.js.map
+//# sourceMappingURL=../../../../src/app/Itinerary/about.component.js.map

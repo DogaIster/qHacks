@@ -8,15 +8,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import { User } from './user';
 var RegisterComponent = (function () {
     function RegisterComponent() {
+        this.user = new User(this.username1, this.password1, this.email1, this.phone_number1);
     }
-    RegisterComponent.prototype.addUser = function (username, password, email, phoneNumber) {
-    };
     return RegisterComponent;
 }());
 RegisterComponent = __decorate([
     Component({
+        selector: 'register',
         templateUrl: 'register.component.html'
     }),
     __metadata("design:paramtypes", [])

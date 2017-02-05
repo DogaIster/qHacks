@@ -7,42 +7,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-/**
- * Created by DogaIster on 2017-02-04.
- */
 import { Injectable } from '@angular/core';
-import { Headers, Http, URLSearchParams } from '@angular/http';
-import { config } from './appconfig';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { Router } from "@angular/router";
-var ItineraryService = (function () {
-    function ItineraryService(http, router) {
-        this.http = http;
-        this.router = router;
-        this.headers = new Headers({ 'Content-Type': 'application/json' });
-        this.itineraryUrl = 'api/data';
+var RegisterComponent = (function () {
+    function RegisterComponent(_http) {
+        this._http = _http;
+        this._url = "http://50.112.200.45/register";
     }
-    ItineraryService.prototype.getElementItinerary = function (element) {
-        var params = new URLSearchParams();
-        var parameters = element.itineraryData[0];
-        for (var param in parameters) {
-            params.set(param, parameters[param]);
-        }
-        var endpoint0 = config[element.endpoint];
+    RegisterComponent.prototype.register = function (user) {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        var data = { metricLocation: element.metricLocation, predicates: element.predicates, parameters: element.itineraryData[0] };
-        if (endpoint0.method === "post") {
-            return this.http.post(endpoint0.url, data, headers).toPromise().then(function (response) { return JSON.parse(response['_body']); }).catch(function (err) {
-                console.log("we got " + err.json());
-            });
-        }
+        return this._http.post(this._url, JSON.stringify(user)).toPromise().then(function (response) { return JSON.parse(response['_body']); });
     };
-    return ItineraryService;
+    return RegisterComponent;
 }());
-ItineraryService = __decorate([
+RegisterComponent = __decorate([
     Injectable(),
-    __metadata("design:paramtypes", [Http, Router])
-], ItineraryService);
-export { ItineraryService };
-//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/app/Itinerary/data.service.js.map
+    __metadata("design:paramtypes", [Http])
+], RegisterComponent);
+export { RegisterComponent };
+//# sourceMappingURL=../../../../src/app/Itinerary/data.service.js.map

@@ -2,8 +2,12 @@
  * Created by DogaIster on 2017-02-04.
  */
 import { Injectable } from '@angular/core';
-import { Headers, Http, URLSearchParams } from '@angular/http';
 import { config } from './appconfig';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import { Http, Headers, Response, ResponseOptions, RequestMethod, BaseRequestOptions } from '@angular/http';
+import { User } from '../pages/user';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -12,33 +16,18 @@ import {Router} from "@angular/router";
 import {ItineraryElement} from "./itinerarymodels";
 
 @Injectable()
-export class ItineraryService {
-    private headers = new Headers({'Content-Type':'application/json'});
-    private itineraryUrl = 'api/data';
+export class RegisterComponent {
 
-    constructor(private http: Http, private router: Router) { }
+  private _url = "http://50.112.200.45/register";
+  constructor(private _http:Http){
 
-    getElementItinerary(element: ItineraryElement): Promise<any> {
-        let params: URLSearchParams = new URLSearchParams();
-        let parameters = element.itineraryData[0];
-        for (let param in parameters){
-            params.set(param, parameters[param]);
-        }
-        let endpoint0 = config[element.endpoint];
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        let data = {metricLocation:element.metricLocation, predicates:element.predicates, parameters:element.itineraryData[0]};
+     }
 
-        if(endpoint0.method === "post"){
-            return this.http.post(endpoint0.url, data, headers).toPromise().then(
-                response => JSON.parse(response['_body'])
-            ).catch(
-                err =>{
-                    console.log("we got " + err.json());
-                }
-            );
-        }
-    }
+     user : User;
+     register(user) {
+       var headers = new Headers();
+       headers.append('Content-Type', 'application/json');
+       return this._http.post(this._url,JSON.stringify(user)).toPromise().then(response => JSON.parse(response['_body']));
+     }
+
 }
-
-

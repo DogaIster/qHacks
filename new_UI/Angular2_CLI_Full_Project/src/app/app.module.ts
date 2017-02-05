@@ -18,18 +18,21 @@ import { BreadcrumbsComponent } from './shared/breadcrumb.component';
 // Routing Module
 import { AppRoutingModule } from './app.routing';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 import { AboutComponent } from './Itinerary/about.component';
 import { ItineraryComponent } from './Itinerary/itinerary.component';
+import { ItineraryFormComponent } from './Itinerary/itineraryForm.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     JsonpModule,
     DropdownModule.forRoot(),
