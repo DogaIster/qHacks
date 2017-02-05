@@ -9,12 +9,12 @@ export const ITENERARIES: ItineraryComponent[] = [
         name: 'Itenerary Germany',
         endpoint: ,
         itineraryData: [
-            [{
-                location: '',
+            {
+                location: 'Vancouver',
                 dateFrom: '',
                 dateTo: '',
 
-            }]
+            }
         ]
 
     }

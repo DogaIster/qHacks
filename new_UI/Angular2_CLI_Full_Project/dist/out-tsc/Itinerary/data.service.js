@@ -31,7 +31,7 @@ var ItineraryService = (function () {
         var endpoint0 = config[element.endpoint];
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        var data = { metricLocation: element.metricLocation, predicates: element.predicates, parameters: element.itineraryData[0] };
+        var data = { metricName: element.metricName, predicates: element.predicates, parameters: element.itineraryData[0] };
         if (endpoint0.method === "post") {
             return this.http.post(endpoint0.url, data, headers).toPromise().then(function (response) { return JSON.parse(response['_body']); }).catch(function (err) {
                 console.log("we got " + err.json());
@@ -45,4 +45,4 @@ ItineraryService = __decorate([
     __metadata("design:paramtypes", [Http, Router])
 ], ItineraryService);
 export { ItineraryService };
-//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/app/Itinerary/data.service.js.map
+//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/Itinerary/data.service.js.map

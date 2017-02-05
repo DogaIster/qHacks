@@ -3,11 +3,11 @@ export var ITENERARIES = [
         name: 'Itenerary Germany',
         endpoint: ,
         itineraryData: [
-            [{
-                    location: '',
-                    dateFrom: '',
-                    dateTo: '',
-                }]
+            {
+                location: 'Vancouver',
+                dateFrom: '',
+                dateTo: '',
+            }
         ]
     }
 ];

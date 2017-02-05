@@ -18,10 +18,9 @@ var AboutComponent = (function () {
 AboutComponent = __decorate([
     Component({
         selector: 'about',
-        templateUrl: './about.component.html',
-        styles: ["\n    body, html {\n        margin: 0;\n        padding: 0;\n        width: 100%;\n        height: 100%;\n        background-color: rgb(255, 252, 248);\n    }\n    .mainpg{\n\n      margin: 0;\n      padding: 0;\n    }\n    .cover{\n      color: rgb(255, 255, 255);\n      position: relative;\n      height: 75em;\n      background: url(\"../img/background.jpeg\") no-repeat scroll 0px 100% / cover transparent;\n    }\n    "],
+        templateUrl: 'about.component.html'
     }),
     __metadata("design:paramtypes", [])
 ], AboutComponent);
 export { AboutComponent };
-//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/app/Itinerary/about.component.js.map
+//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/about.component.js.map
