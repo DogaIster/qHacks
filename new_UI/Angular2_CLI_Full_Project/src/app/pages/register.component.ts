@@ -23,13 +23,17 @@ export class RegisterComponent implements AfterViewInit {
 
     constructor() { }
 
-    ngAfterViewInit() {
-        let register = {
-          username: '',
-          password: '',
-          email: '',
-          phoneNumber: 0,
-        }
+  ngAfterViewInit(){
+    $('#signup').appendTo("body")
+    console.log('his')
+
+    let register = {
+      username: '',
+      password: '',
+      email: '',
+      phoneNumber: 0,
+    }
+  
         $("#registerButton").click(() => {
           register.username = $('#username').val();
           register.password = $('#password').val();
