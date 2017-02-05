@@ -1,6 +1,6 @@
 const connect = require('camo').connect;
 const Document = require('camo').Document;
-//const EmbeddedDocument = require('camo').EmbeddedDocument;
+const EmbeddedDocument = require('camo').EmbeddedDocument;
 const validEmail = require("email-validator");
 const uri = 'nedb:///data/chat-it';
 const bcrypt = require('bcrypt');
@@ -79,24 +79,13 @@ class User extends Document {
 	}
 }
 
-class Entry extends Document {
+class Entry extends EmbeddedDocument {
 	constructor() {
 		super();
 		this.location = String;
 		this.activity = String;
 		this.time = String;
 		this.duration = Number;
-	}
-
-	static async get(data) {
-		let locationRegex = new RegExp(data.location, 'i');
-		let query = {
-			'location': locationRegex
-		};
-
-		console.log(query);
-		let result = await this.findOne(query);
-		console.log(result);
 	}
 }
 
@@ -133,7 +122,7 @@ class Itin extends Document {
 			for (let entry of day) {
 				//console.log(entry);
 				let entryObj = Entry.create(entry);
-				await entryObj.save();
+				itin.location += ' ' + entryObj.location;
 				hour.push(entryObj);
 			}
 			itin.itineraryData.push(hour);
@@ -165,6 +154,11 @@ class Itin extends Document {
 			} catch (e) {
 				console.log(e);
 			}
+			for (let day of result.itineraryData) {
+				for (let hour of day) {
+					delete hour._schema;
+				}
+			}
 			returnArr.push(result.toJSON());
 		}
 
@@ -176,7 +170,7 @@ class Itin extends Document {
 	static async get(data) {
 		let locationRegex = new RegExp(data.location, 'i');
 		let query = {
-			'location': locationRegex
+			'itineraryData.location': locationRegex
 		};
 
 		console.log(query);
@@ -194,5 +188,4 @@ connect(uri).then(function (database) {
 module.exports = {
 	Itin,
 	User,
-	Entry,
 };
