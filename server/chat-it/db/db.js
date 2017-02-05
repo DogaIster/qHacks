@@ -178,12 +178,13 @@ class Itin extends Document {
 			let result = await this.findOne(query);
 			result.hits++;
 			await result.save();
+			return result;
 		} catch (e) {
-			console.log(e);
+			console.log('error', e);
 			return null;
 		}
 
-		return result;
+
 	}
 }
 
