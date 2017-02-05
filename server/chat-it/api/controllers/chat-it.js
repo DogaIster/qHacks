@@ -45,7 +45,7 @@ const webhook = wrap(async function webhook(req, res) {
 	let result = await Itin.get({
 		location
 	});
-	let retStr = '';
+	let retStr = '\n\n\n';
 	if (city) {
 		let locationRegex = new RegExp(city, 'i');
 		let match;
@@ -61,13 +61,14 @@ const webhook = wrap(async function webhook(req, res) {
 			}
 		}
 
-		retStr = `Wow! ${city}! That's a great place to check out. Luckily, ${result.user} also went in this area from
-		${result.dateFrom}-${result.dateTo}. They went ${match.activity} at ${match.time} for ${match.duration} hours.`;
+		retStr += `Wow! ${city}! That's a great place to check out. Luckily, ${result.user} also went in this area from ${result.dateFrom} - ${result.dateTo}. They went ${match.activity} at ${match.time} for ${match.duration} hours.`;
 
 	} else {
-		retStr = `${country}, a great place to check out! Text me back a city in ${country} to get more information of what people did there.
-		Here are some possible cities that people have written about:
-		`;
+		retStr += `${country}, a great place to check out! Text me back a city in ${country} to get more information of what people did there.
+
+Here are some possible cities that people have written about:
+
+`;
 		for (let day of result.itineraryData) {
 			for (let entry of day) {
 				retStr += entry.location + '\n';
@@ -78,7 +79,7 @@ const webhook = wrap(async function webhook(req, res) {
 	console.log(result);
 	return res.json({
 		speech: retStr,
-		displayText: 'Nice 1 ',
+		displayText: retStr,
 		data: {},
 		contextOut: [],
 		source: 'chatIt',
