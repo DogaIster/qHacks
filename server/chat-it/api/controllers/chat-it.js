@@ -62,7 +62,9 @@ const webhook = wrap(async function webhook(req, res) {
 		}
 
 		retStr += `Wow! ${city}! That's a great place to check out.
+
 Luckily, ${result.user} also went in this area from ${result.dateFrom} - ${result.dateTo}.
+
 They went ${match.activity} at ${match.time} for ${match.duration} hours.`;
 
 	} else {
