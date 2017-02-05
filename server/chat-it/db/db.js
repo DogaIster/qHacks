@@ -102,8 +102,8 @@ class Itin extends Document {
 
 
 	static async add(data) {
-		let deleted = await this.deleteMany({});
-		console.log(`Deleted:${deleted}`);
+		//let deleted = await this.deleteMany({});
+		//console.log(`Deleted:${deleted}`);
 
 		let itin = Itin.create();
 		itin.location = data.location;
@@ -134,16 +134,33 @@ class Itin extends Document {
 	}
 
 	static async getAll(limit = 100) {
+		console.log('get all called');
 		let results = await this.find({}, {
 			limit,
-			sort: '-hits'
+			sort: '-hits',
+			populate: false
 		});
 		//increment hits
+
+		let returnArr = [];
 		for (let result of results) {
 			result.hits++;
-			await result.save();
+			try {
+				await result.save();
+			} catch (e) {
+				console.log(e);
+			}
+			for (let day of result.itineraryData) {
+				for (let hour of day) {
+					delete hour._schema;
+				}
+			}
+			returnArr.push(result.toJSON());
 		}
-		return results;
+
+		console.log('returning results');
+		console.log(returnArr);
+		return returnArr;
 	}
 }
 
