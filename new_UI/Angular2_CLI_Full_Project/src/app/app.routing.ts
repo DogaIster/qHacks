@@ -19,10 +19,6 @@ export const routes: Routes = [
     },
     children: [
       {
-        path: 'shareItinerary',
-        loadChildren: './Itinerary/itineraryForm'
-      },
-      {
         path: 'dashboard',
         loadChildren: './dashboard/dashboard.module#DashboardModule'
       },

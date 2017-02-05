@@ -22,10 +22,6 @@ export var routes = [
         },
         children: [
             {
-                path: 'shareItinerary',
-                loadChildren: './Itinerary/itineraryForm'
-            },
-            {
                 path: 'dashboard',
                 loadChildren: './dashboard/dashboard.module#DashboardModule'
             },
