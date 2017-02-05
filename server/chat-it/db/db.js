@@ -174,9 +174,15 @@ class Itin extends Document {
 		};
 
 		console.log(query);
-		let result = await this.findOne(query);
-		result.hits++;
-		await result.save();
+		try {
+			let result = await this.findOne(query);
+			result.hits++;
+			await result.save();
+		} catch (e) {
+			console.log(e);
+			return null;
+		}
+
 		return result;
 	}
 }
