@@ -24,6 +24,7 @@ export class RegisterComponent implements AfterViewInit{
   constructor(){}
 
   ngAfterViewInit(){
+    $('#signup').appendTo("body")
     console.log('his')
     let login = {
       name: 'henry',
