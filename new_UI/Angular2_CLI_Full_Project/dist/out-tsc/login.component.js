@@ -8,19 +8,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
-var ItineraryComponent = (function () {
-    function ItineraryComponent() {
+var LoginComponent = (function () {
+    function LoginComponent() {
     }
-    ItineraryComponent.prototype.ngOnInit = function () {
+    LoginComponent.prototype.ngOnInit = function () {
     };
-    return ItineraryComponent;
+    return LoginComponent;
 }());
-ItineraryComponent = __decorate([
+LoginComponent = __decorate([
     Component({
-        selector: 'app-itinerary',
-        templateUrl: './itinerary.component.html'
+        selector: 'app-login',
+        templateUrl: './login.component.html'
     }),
     __metadata("design:paramtypes", [])
-], ItineraryComponent);
-export { ItineraryComponent };
-//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/app/Itinerary/itinerary.component.js.map
+], LoginComponent);
+export { LoginComponent };
+//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/login.component.js.map
