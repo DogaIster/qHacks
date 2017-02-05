@@ -40,8 +40,30 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-
-
+  /getItinerary:
+    x-swagger-router-controller: chat-it
+    get:
+      description: get result of itinerary based on filters, returns 10 results sorted by popularity if nothing given
+      operationId: getItinerary
+      parameters:
+      - name: getParams
+        in: body
+        description: Takes a query object and returns itinerary results
+        schema:
+          properties:
+            query:
+              type: object
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
   /login:
     x-swagger-router-controller: chat-it
     post:
@@ -158,7 +180,7 @@ definitions:
         type: string
       duration:
         type: integer
-
+        
   postItinerary:
     required:
       - location

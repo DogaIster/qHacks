@@ -85,6 +85,25 @@ const register = wrap(async function register(req, res) {
 	}
 });
 
+const getItinerary = wrap(async function getItinerary(req, res) {
+	const query = req.swagger.params.getParams.value;
+	//check if obj empty
+	console.log('called2')
+	if (Object.keys(query).length === 0 && query.constructor === Object) {
+		console.log('called1')
+		try {
+			console.log('called')
+			let results = await Itin.getAll();
+			console.log('\n\n\n\n results', results)
+			return res.json(results);
+		} catch (e) {
+			//	console.log('error', e);
+		}
+
+	}
+	console.log('hi')
+});
+
 const login = wrap(async function login(req, res) {
 	if (req.cookies.username) {
 		return res.status(404).json({
@@ -117,6 +136,7 @@ const logout = wrap(function logout(req, res) {
 
 module.exports = {
 	postItinerary,
+	getItinerary,
 	register,
 	login,
 	logout,
