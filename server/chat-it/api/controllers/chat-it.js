@@ -11,7 +11,6 @@
   It is a good idea to list the modules that your application depends on in the package.json in the project root
  */
 const Itin = require('../../db/db').Itin;
-const Entry = require('../../db/db').Itin;
 const User = require('../../db/db').User;
 const wrap = require('express-async-wrap');
 
@@ -41,22 +40,46 @@ const webhook = wrap(async function webhook(req, res) {
 	console.log(obj.result.parameters);
 	let city = obj.result.parameters["geo-city"];
 	let country = obj.result.parameters["geo-country"];
-	let result;
+	let location = city || country;
+	console.log(location);
+	let result = await Itin.get({
+		location
+	});
+	let retStr = '\n\n\n';
 	if (city) {
-		result = await Entry.get({
-			location: city
-		});
-	}
-	if (country) {
-		result = await Itin.get({
-			location: country
-		});
+		let locationRegex = new RegExp(city, 'i');
+		let match;
+		let isMatched = false;
+		for (let day of result.itineraryData) {
+			if (isMatched) break;
+			for (let entry of day) {
+				if (entry.location.search(locationRegex) !== -1) {
+					match = entry;
+					isMatched = true;
+					break;
+				}
+			}
+		}
+
+		retStr += `Wow! ${city}! That's a great place to check out. Luckily, ${result.user} also went in this area from ${result.dateFrom} - ${result.dateTo}. They went ${match.activity} at ${match.time} for ${match.duration} hours.`;
+
+	} else {
+		retStr += `${country}, a great place to check out! Text me back a city in ${country} to get more information of what people did there.
+
+Here are some possible cities that people have written about:
+
+`;
+		for (let day of result.itineraryData) {
+			for (let entry of day) {
+				retStr += entry.location + '\n';
+			}
+		}
 	}
 
 	console.log(result);
 	return res.json({
-		speech: 'Bruh thats a gr8 place',
-		displayText: 'Nice 1 ',
+		speech: retStr,
+		displayText: retStr,
 		data: {},
 		contextOut: [],
 		source: 'chatIt',
@@ -65,8 +88,8 @@ const webhook = wrap(async function webhook(req, res) {
 const postItinerary = wrap(async function postItinerary(req, res) {
 	// variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
 
-	const data = req.swagger.params.itineraryData.value || 'Anonymous';
-	data.username = req.cookies.username;
+	const data = req.swagger.params.itineraryData.value;
+	data.username = req.cookies.username || 'Anonymous';
 
 	try {
 		await Itin.add(data);
