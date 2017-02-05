@@ -1,8 +1,11 @@
 var SwaggerExpress = require('swagger-express-mw');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 var app = require('express')();
 app.use(cookieParser());
+app.use(cors());
+
 module.exports = app; // for testing
 
 var config = {

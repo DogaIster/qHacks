@@ -37,7 +37,7 @@ const wrap = require('express-async-wrap');
 
 const webhook = wrap(function webhook(req, res) {
 	console.log(req.swagger.params.webhook.value);
-	res.json({
+	return res.json({
 		speech: 'Bruh thats a gr8 place',
 		displayText: 'Nice 1 ',
 		data: {},

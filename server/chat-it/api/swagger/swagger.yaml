@@ -20,7 +20,7 @@ paths:
   /webhook:
     x-swagger-router-controller: chat-it
     post:
-      description: webhook for api.ai
+      description: webhook for api.aijquery
       operationId: webhook
       parameters:
       - name: webhook

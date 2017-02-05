@@ -11,6 +11,7 @@
     "bcrypt": "^1.0.2",
     "camo": "^0.12.3",
     "cookie-parser": "^1.4.3",
+    "cors": "^2.8.1",
     "express": "^4.12.3",
     "express-async-wrap": "^1.0.0",
     "nedb": "^1.8.0",
