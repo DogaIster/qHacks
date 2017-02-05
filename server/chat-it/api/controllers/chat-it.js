@@ -61,7 +61,9 @@ const webhook = wrap(async function webhook(req, res) {
 			}
 		}
 
-		retStr += `Wow! ${city}! That's a great place to check out. Luckily, ${result.user} also went in this area from ${result.dateFrom} - ${result.dateTo}. They went ${match.activity} at ${match.time} for ${match.duration} hours.`;
+		retStr += `Wow! ${city}! That's a great place to check out.
+Luckily, ${result.user} also went in this area from ${result.dateFrom} - ${result.dateTo}.
+They went ${match.activity} at ${match.time} for ${match.duration} hours.`;
 
 	} else {
 		retStr += `${country}, a great place to check out! Text me back a city in ${country} to get more information of what people did there.
