@@ -88,8 +88,8 @@ Here are some possible cities that people have written about:
 const postItinerary = wrap(async function postItinerary(req, res) {
 	// variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
 
-	const data = req.swagger.params.itineraryData.value || 'Anonymous';
-	data.username = req.cookies.username;
+	const data = req.swagger.params.itineraryData.value;
+	data.username = req.cookies.username || 'Anonymous';
 
 	try {
 		await Itin.add(data);
