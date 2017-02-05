@@ -37,9 +37,11 @@ const wrap = require('express-async-wrap');
 
 const webhook = wrap(async function webhook(req, res) {
 	let obj = req.swagger.params.webhook.value;
+	console.log(obj.result.parameters);
 	let city = obj.result.parameters["geo-city"];
 	let country = obj.result.parameters["geo-country"];
 	let location = city || country;
+	console.log(location);
 	let result = await Itin.get({
 		location
 	});
