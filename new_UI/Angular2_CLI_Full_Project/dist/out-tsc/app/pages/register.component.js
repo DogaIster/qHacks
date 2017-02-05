@@ -17,6 +17,8 @@ var RegisterComponent = (function () {
         this.user = new User(this.username1, this.password1, this.email1, this.phone_number1);
     }
     RegisterComponent.prototype.ngAfterViewInit = function () {
+        $('#signup').appendTo("body");
+        console.log('his');
         var register = {
             username: '',
             password: '',
