@@ -37,6 +37,13 @@ const wrap = require('express-async-wrap');
 
 const webhook = wrap(function webhook(req, res) {
 	console.log(req.swagger.params.webhook.value);
+	res.json({
+		speech: 'Bruh thats a gr8 place',
+		displayText: 'Nice 1 ',
+		data: {},
+		contextOut: [],
+		source: 'chatIt',
+	});
 });
 const postItinerary = wrap(async function postItinerary(req, res) {
 	// variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
