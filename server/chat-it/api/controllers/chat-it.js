@@ -36,7 +36,14 @@ const wrap = require('express-async-wrap');
  */
 
 const webhook = wrap(async function webhook(req, res) {
-	console.log(req.swagger.params.webhook.value);
+	let obj = req.swagger.params.webhook.value;
+	let city = obj.result.parameters["geo-city"];
+	let country = obj.result.parameters["geo-country"];
+	let location = city || country;
+	let result = await Itin.get({
+		location
+	});
+	console.log(result);
 	return res.json({
 		speech: 'Bruh thats a gr8 place',
 		displayText: 'Nice 1 ',

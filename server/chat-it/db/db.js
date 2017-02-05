@@ -165,6 +165,16 @@ class Itin extends Document {
 		console.log(returnArr);
 		return returnArr;
 	}
+
+	static async get(data) {
+		let locationRegex = new RegExp(data.location, 'i');
+		let query = {
+			'itineraryData.location': locationRegex
+		};
+
+		let result = await this.findOne(query);
+		console.log(result);
+	}
 }
 
 
