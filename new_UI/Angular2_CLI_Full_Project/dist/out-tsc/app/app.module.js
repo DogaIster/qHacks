@@ -7,6 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
 import { TabsModule } from 'ng2-bootstrap/tabs';
@@ -15,8 +17,10 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { SIDEBAR_TOGGLE_DIRECTIVES } from './shared/sidebar.directive';
 import { AsideToggleDirective } from './shared/aside.directive';
 import { BreadcrumbsComponent } from './shared/breadcrumb.component';
+// Routing Module
 import { AppRoutingModule } from './app.routing';
 import { RouterModule } from '@angular/router';
+// Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 import { AboutComponent } from './Itinerary/about.component';
@@ -30,6 +34,9 @@ AppModule = __decorate([
         imports: [
             BrowserModule,
             AppRoutingModule,
+            FormsModule,
+            HttpModule,
+            JsonpModule,
             DropdownModule.forRoot(),
             TabsModule.forRoot(),
             ChartsModule,
@@ -58,4 +65,4 @@ AppModule = __decorate([
     })
 ], AppModule);
 export { AppModule };
-//# sourceMappingURL=../../../src/app/app.module.js.map
+//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/app/app.module.js.map

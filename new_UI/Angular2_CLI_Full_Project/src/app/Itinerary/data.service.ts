@@ -27,7 +27,7 @@ export class ItineraryService {
         let endpoint0 = config[element.endpoint];
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        let data = {metricName:element.metricName, predicates:element.predicates, parameters:element.itineraryData[0]};
+        let data = {metricLocation:element.metricLocation, predicates:element.predicates, parameters:element.itineraryData[0]};
 
         if(endpoint0.method === "post"){
             return this.http.post(endpoint0.url, data, headers).toPromise().then(

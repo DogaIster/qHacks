@@ -8,18 +8,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
-var RegisterComponent = (function () {
-    function RegisterComponent() {
+var ItineraryComponent = (function () {
+    function ItineraryComponent() {
     }
-    RegisterComponent.prototype.addUser = function (username, password, email, phoneNumber) {
+    ItineraryComponent.prototype.ngOnInit = function () {
     };
-    return RegisterComponent;
+    return ItineraryComponent;
 }());
-RegisterComponent = __decorate([
+ItineraryComponent = __decorate([
     Component({
-        templateUrl: 'register.component.html'
+        selector: 'app-itinerary',
+        templateUrl: './itinerary.component.html'
     }),
     __metadata("design:paramtypes", [])
-], RegisterComponent);
-export { RegisterComponent };
-//# sourceMappingURL=../../../../src/app/pages/register.component.js.map
+], ItineraryComponent);
+export { ItineraryComponent };
+//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/itinerary.component.js.map

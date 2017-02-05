@@ -8,18 +8,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
-var RegisterComponent = (function () {
-    function RegisterComponent() {
+var LoginComponent = (function () {
+    function LoginComponent() {
     }
-    RegisterComponent.prototype.addUser = function (username, password, email, phoneNumber) {
+    LoginComponent.prototype.ngOnInit = function () {
     };
-    return RegisterComponent;
+    return LoginComponent;
 }());
-RegisterComponent = __decorate([
+LoginComponent = __decorate([
     Component({
-        templateUrl: 'register.component.html'
+        selector: 'app-login',
+        templateUrl: './login.component.html'
     }),
     __metadata("design:paramtypes", [])
-], RegisterComponent);
-export { RegisterComponent };
-//# sourceMappingURL=../../../../src/app/pages/register.component.js.map
+], LoginComponent);
+export { LoginComponent };
+//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/Itinerary/login.component.js.map

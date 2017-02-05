@@ -9,6 +9,6 @@ export class ItineraryElement{
     dateTo: string;
     itineraryData: any[];
     endpoint?:string;
-    metricName?: string;
+    metricLocation?: string;
     predicates?: string[];
 }

@@ -12,15 +12,41 @@ import { Component, OnInit } from '@angular/core';
         background-color: rgb(255, 252, 248);
     }
     .mainpg{
-
       margin: 0;
       padding: 0;
     }
     .cover{
       color: rgb(255, 255, 255);
       position: relative;
-      height: 75em;
+      height: 60em;
       background: url("../img/background.jpeg") no-repeat scroll 0px 100% / cover transparent;
+    }
+    .space {
+      height : 24em;
+    }
+    .space-2 {
+      height : 23em;
+    }
+    .heading {
+      font-size: 60px;
+      color: white;
+    }
+    .section3 {
+      padding-top : 30px;
+    }
+    .text-black {
+      color: black;
+    }
+    .text-white {
+      color: white;
+    }
+    .icons {
+      padding-top: 80px;
+    }
+    #footer {
+      margin-top : 100px;
+      text-align : center;
+      margin-bottom : 35px;
     }
     `],
 })

@@ -11,15 +11,16 @@ import { Component } from '@angular/core';
 var RegisterComponent = (function () {
     function RegisterComponent() {
     }
-    RegisterComponent.prototype.addUser = function (username, password, email, phoneNumber) {
+    RegisterComponent.prototype.ngOnInit = function () {
     };
     return RegisterComponent;
 }());
 RegisterComponent = __decorate([
     Component({
-        templateUrl: 'register.component.html'
+        selector: 'app-register',
+        templateUrl: './register.component.html'
     }),
     __metadata("design:paramtypes", [])
 ], RegisterComponent);
 export { RegisterComponent };
-//# sourceMappingURL=../../../../src/app/pages/register.component.js.map
+//# sourceMappingURL=/Users/DogaIster/Desktop/OneDrive/qHacks/new_UI/Angular2_CLI_Full_Project/src/Itinerary/register.component.js.map
